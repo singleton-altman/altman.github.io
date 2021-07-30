@@ -282,7 +282,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/07/30/hello-world/" itemprop="url">知之非艰, 行之惟艰</a></h1>
+                <a class="post-title-link" href="/2021/07/30/hello-world/" itemprop="url">Hexo搭建遇到的问题</a></h1>
         
 
         <div class="post-meta">
@@ -294,7 +294,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-30T09:27:00+00:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-30T09:42:59+00:00">
                 2021-07-30
               </time>
             
@@ -334,7 +334,15 @@
       
         
           
-            <h4 id="想做什么-有计划么"><a href="#想做什么-有计划么" class="headerlink" title="想做什么, 有计划么?"></a>想做什么, 有计划么?</h4><h4 id="进行到哪一步了-后续要做什么"><a href="#进行到哪一步了-后续要做什么" class="headerlink" title="进行到哪一步了, 后续要做什么?"></a>进行到哪一步了, 后续要做什么?</h4>
+            <ol>
+<li>更换主题造成的乱码<ul>
+<li>原因: hexo在5.0之后把swig给删除了</li>
+<li>解决: 项目内 <code>$ npm i hexo-renderer-swig</code></li>
+<li>重编一下项目即可(CI的情况下直接提交代码)</li>
+</ul>
+</li>
+</ol>
+
           
         
       
