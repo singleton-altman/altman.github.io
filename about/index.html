@@ -22,24 +22,27 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="所见, 所想, 所思, 所得">
 <meta property="og:type" content="website">
-<meta property="og:title" content="行之惟艰">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:title" content="谁能拒绝一个会写代码的读书人那">
+<meta property="og:url" content="http://example.com/about/index.html">
 <meta property="og:site_name" content="行之惟艰">
 <meta property="og:description" content="所见, 所想, 所思, 所得">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-02T10:34:47.408Z">
+<meta property="article:modified_time" content="2021-08-02T10:34:47.408Z">
 <meta property="article:author" content="jun.c">
 <meta property="article:tag" content="ioser, 读书, web, node.js">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/about/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"http://example.com/about/index.html","path":"about/index.html","title":"谁能拒绝一个会写代码的读书人那"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>行之惟艰</title>
+<title>谁能拒绝一个会写代码的读书人那 | 行之惟艰
+</title>
   
 
 
@@ -162,110 +165,36 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner page posts-expand">
+  
+  
+
 
     
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
 
+<h1 class="post-title" itemprop="name headline">谁能拒绝一个会写代码的读书人那
+</h1>
 
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="jun.c">
-      <meta itemprop="description" content="所见, 所想, 所思, 所得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行之惟艰">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo/" class="post-title-link" itemprop="url">Hexo搭建遇到的问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-02 10:34:47" itemprop="dateCreated datePublished" datetime="2021-08-02T10:34:47+00:00">2021-08-02</time>
-    </span>
-
-  
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>672</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
+<div class="post-meta-container">
 </div>
 
-        </div>
-      </header>
+</header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li>更换主题造成的乱码<ul>
-<li>原因: hexo在5.0之后把swig给删除了</li>
-<li>解决: 项目内 <code>$ npm i hexo-renderer-swig</code></li>
-<li>重编一下项目即可(CI的情况下直接提交代码)</li>
-</ul>
-</li>
-<li>自定义配置时候.yml文件被覆盖问题<ul>
-<li>原因: 因为我们的<code>NexT</code>主题是使用<code>npm</code>加载的, 所以资源都是统一被放在<code>node_modules</code>内, 如果做自定义配置而修改了内部文件的话, 在下次<code>$ npm install</code>的时候就会被覆盖.</li>
-<li>解决: <code>$ cp node_modules/hexo-theme-[theme name]/_config.yml _config.[theme name].yml</code>. <code>[theme name]</code> 需要替换成自己所用的主题名字, 比如<code>next</code>.</li>
-<li>在新拷贝出来的文件内做修改, <code>hexo</code>会自动选择.</li>
-</ul>
-</li>
-<li>文章字数统计<ul>
-<li>安装: <code>$ npm install hexo-symbols-count-time --save</code></li>
-<li><code>_config.yml</code>设置:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time: </span><br><span class="line">symbols: true # 文章字数统计  </span><br><span class="line">time: true # 文章阅读时长  </span><br><span class="line">total_symbols: true # 站点总字数统计  </span><br><span class="line">total_time: false # 站点总阅读时长  </span><br><span class="line">exclude_codeblock: false # 排除代码字数统计</span><br></pre></td></tr></table></figure></li>
-<li>可选: <code>_config.yml</code>中<code>language</code>设置为<code>zh_CN</code></li>
-</ul>
-</li>
-<li><code>NexT</code>主题配置 <code>_config.next.yml</code><ul>
-<li>代码块: <code>codeblock</code>字段下按需配置.先<a target="_blank" rel="noopener" href="https://theme-next.js.org/highlight/">体验</a>, 后选择.(🤔, 一玩一天).</li>
-<li>favicon: <code>favicon</code> 字段下设置. 对应文件拖入项目内, 配置好路径即可~. 推荐一个<a target="_blank" rel="noopener" href="https://realfavicongenerator.net/">工具网站</a></li>
-<li></li>
-</ul>
-</li>
-</ol>
-
+      
+      
+      <div class="post-body">
+          
+      </div>
+      
+      
       
     </div>
 
     
     
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
 
 </div>

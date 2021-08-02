@@ -20,26 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="所见, 所想, 所思, 所得">
-<meta property="og:type" content="website">
-<meta property="og:title" content="行之惟艰">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="更换主题造成的乱码 原因: hexo在5.0之后把swig给删除了 解决: 项目内 $ npm i hexo-renderer-swig 重编一下项目即可(CI的情况下直接提交代码)   自定义配置时候.yml文件被覆盖问题 原因: 因为我们的NexT主题是使用npm加载的, 所以资源都是统一被放在node_modules内, 如果做自定义配置而修改了内部文件的话, 在下次$ npm insta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo搭建遇到的问题">
+<meta property="og:url" content="http://example.com/hexo/index.html">
 <meta property="og:site_name" content="行之惟艰">
-<meta property="og:description" content="所见, 所想, 所思, 所得">
+<meta property="og:description" content="更换主题造成的乱码 原因: hexo在5.0之后把swig给删除了 解决: 项目内 $ npm i hexo-renderer-swig 重编一下项目即可(CI的情况下直接提交代码)   自定义配置时候.yml文件被覆盖问题 原因: 因为我们的NexT主题是使用npm加载的, 所以资源都是统一被放在node_modules内, 如果做自定义配置而修改了内部文件的话, 在下次$ npm insta">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-02T10:34:47.408Z">
+<meta property="article:modified_time" content="2021-08-02T10:34:47.408Z">
 <meta property="article:author" content="jun.c">
 <meta property="article:tag" content="ioser, 读书, web, node.js">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/hexo/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/hexo/","path":"hexo/","title":"Hexo搭建遇到的问题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>行之惟艰</title>
+<title>Hexo搭建遇到的问题 | 行之惟艰</title>
   
 
 
@@ -162,16 +164,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -184,9 +187,9 @@
       <meta itemprop="name" content="行之惟艰">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo/" class="post-title-link" itemprop="url">Hexo搭建遇到的问题</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Hexo搭建遇到的问题
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -223,7 +226,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <ol>
+        <ol>
 <li>更换主题造成的乱码<ul>
 <li>原因: hexo在5.0之后把swig给删除了</li>
 <li>解决: 项目内 <code>$ npm i hexo-renderer-swig</code></li>
@@ -250,7 +253,6 @@
 </li>
 </ol>
 
-      
     </div>
 
     
@@ -258,11 +260,13 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+
+        
+
     </footer>
   </article>
 </div>
+
 
 
 
