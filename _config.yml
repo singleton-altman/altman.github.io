@@ -8,13 +8,13 @@ subtitle: "知之非艰，行之惟艰"
 description: "所见, 所想, 所思, 所得"
 keywords: ioser, 读书, web, node.js
 author: jun.c
-language: en
+language: zh-CN
 timezone: ""
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://example.com
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -103,3 +103,10 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ""
+
+symbols_count_time:
+  symbols: true # 文章字数统计
+  time: true # 文章阅读时长
+  total_symbols: true # 站点总字数统计
+  total_time: false # 站点总阅读时长
+  exclude_codeblock: false # 排除代码字数统计
