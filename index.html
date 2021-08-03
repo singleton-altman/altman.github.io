@@ -188,7 +188,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-08-03 02:55:07" itemprop="dateCreated datePublished" datetime="2021-08-03T02:55:07+00:00">2021-08-03</time>
+      <time title="创建时间：2021-08-03 02:58:57" itemprop="dateCreated datePublished" datetime="2021-08-03T02:58:57+00:00">2021-08-03</time>
     </span>
 
   
@@ -215,26 +215,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <ol>
-<li>更换主题造成的乱码<ul>
+          <ul>
+<li><h3 id="更换主题造成的乱码"><a href="#更换主题造成的乱码" class="headerlink" title="更换主题造成的乱码"></a>更换主题造成的乱码</h3><ul>
 <li>原因: hexo在5.0之后把swig给删除了</li>
 <li>解决: 项目内 <code>$ npm i hexo-renderer-swig</code></li>
 <li>重编一下项目即可(CI的情况下直接提交代码)</li>
 </ul>
 </li>
-<li>自定义配置时候.yml文件被覆盖问题<ul>
+<li><h3 id="自定义配置时候-yml文件被覆盖问题"><a href="#自定义配置时候-yml文件被覆盖问题" class="headerlink" title="自定义配置时候.yml文件被覆盖问题"></a>自定义配置时候.yml文件被覆盖问题</h3><ul>
 <li>原因: 因为我们的<code>NexT</code>主题是使用<code>npm</code>加载的, 所以资源都是统一被放在<code>node_modules</code>内, 如果做自定义配置而修改了内部文件的话, 在下次<code>$ npm install</code>的时候就会被覆盖.</li>
 <li>解决: <code>$ cp node_modules/hexo-theme-[theme name]/_config.yml _config.[theme name].yml</code>. <code>[theme name]</code> 需要替换成自己所用的主题名字, 比如<code>next</code>.</li>
 <li>在新拷贝出来的文件内做修改, <code>hexo</code>会自动选择.</li>
 </ul>
 </li>
-<li>文章字数统计<ul>
+<li><h3 id="文章字数统计"><a href="#文章字数统计" class="headerlink" title="文章字数统计"></a>文章字数统计</h3><ul>
 <li>安装: <code>$ npm install hexo-symbols-count-time --save</code></li>
 <li><code>_config.yml</code>设置:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time: </span><br><span class="line">symbols: true # 文章字数统计  </span><br><span class="line">time: true # 文章阅读时长  </span><br><span class="line">total_symbols: true # 站点总字数统计  </span><br><span class="line">total_time: false # 站点总阅读时长  </span><br><span class="line">exclude_codeblock: false # 排除代码字数统计</span><br></pre></td></tr></table></figure></li>
 <li>可选: <code>_config.yml</code>中<code>language</code>设置为<code>zh_CN</code></li>
 </ul>
 </li>
-<li><code>NexT</code>主题配置 <code>_config.next.yml</code><ul>
+<li><h3 id="NexT主题配置-config-next-yml"><a href="#NexT主题配置-config-next-yml" class="headerlink" title="NexT主题配置 _config.next.yml"></a><code>NexT</code>主题配置 <code>_config.next.yml</code></h3><ul>
 <li>代码块: <code>codeblock</code>字段下按需配置.<ul>
 <li>先<a target="_blank" rel="noopener" href="https://theme-next.js.org/highlight/">体验</a>, 后选择.</li>
 <li>🤔, 一玩一天</li>
@@ -256,7 +256,7 @@
 </li>
 </ul>
 </li>
-</ol>
+</ul>
 
       
     </div>
