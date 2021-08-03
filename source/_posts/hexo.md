@@ -15,11 +15,11 @@ title: Hexo搭建遇到的问题
     - `_config.yml`设置:
 ```
 symbols_count_time: 
-symbols: true # 文章字数统计  
-time: true # 文章阅读时长  
-total_symbols: true # 站点总字数统计  
-total_time: false # 站点总阅读时长  
-exclude_codeblock: false # 排除代码字数统计
+    symbols: true # 文章字数统计  
+    time: true # 文章阅读时长  
+    total_symbols: true # 站点总字数统计  
+    total_time: false # 站点总阅读时长  
+    exclude_codeblock: false # 排除代码字数统计
 ```
     - 可选: `_config.yml`中`language`设置为`zh_CN`
 - ### `NexT`主题配置 `_config.next.yml`
