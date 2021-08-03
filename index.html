@@ -210,7 +210,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-08-03 11:44:17 / 修改时间：09:46:24" itemprop="dateCreated datePublished" datetime="2021-08-03T11:44:17+00:00">2021-08-03</time>
+      <time title="创建时间：2021-08-03 11:44:17 / 修改时间：10:00:22" itemprop="dateCreated datePublished" datetime="2021-08-03T11:44:17+00:00">2021-08-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,40 +259,19 @@
     
     <div class="post-body" itemprop="articleBody">
           <ul>
-<li><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2>  前段时间产品给了一个在<code>@</code>好友的功能<ul>
+<li><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>  前段时间产品给了一个在<code>@</code>好友的功能</p>
+<ul>
 <li>用户在单独输入<code>@</code>符号的时候, 触发好友列表页面弹出, 然后在用户点击好友A的时候在输入框内自动设置文案: <code>@A </code>; </li>
 <li>在这段文案后输入<code>删除</code>的时候, 整段文案一起被移除.</li>
-<li>用户发出这段文本以后, 其他用户可以点击前往用户A的个人主页</li>
-</ul>
-</li>
-<li><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
-<li>在 UITextfield 的 delegate 内监听关键字 <code>@</code> 和<code> </code>, 分别实现弹出好友列表和移除文案操作, 这个很简单.</li>
-<li>在用户选择好友后, 文案拼接拼装到 UITextfield 的 text 内; 在监听到 <code> </code>输入的时候, 通过<code>字符串匹配</code>或者<code>正则表达式</code>, 移除光标前一段符合规则的 <code>@A </code>文本.</li>
-<li>在发出文本的时候, 基于字符串查找逻辑, 将特殊文本和用户id做关联, 将整个数据包发送给后端. 然后进行转发.</li>
-<li>以上, 这个功能就已经实现了. </li>
-</ul>
-</li>
-<li><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2>  上面的方案虽然可以解决基础的问题, 但是(PS1: 凡事总有一个但是; PS2: 大家都讨厌这个但是…)<ul>
-<li>如果好友A的昵称在存在空格 <code> </code> (文本: <code>@A B </code>)的情况下, 以上方案的删除就会失效. 我们也不能无脑暴力的按照 <code>@</code> 和 <code> </code> 进行删除文本, 这样 <code>BUG🐛</code> 会更加严重.</li>
-<li>因为需要考虑数据的跨端传输, 而因为用户昵称可能存在 emoji 字符或者其他特殊字体, 所以使用位置计算告知后端index进行匹配的话, 可能会有不同语言的index计算错误问题. 比如 <a target="_blank" rel="noopener" href="https://swift.org/">swift</a><del>谁会不爱 <code>swift</code> 那</del> 内的 <code>😊.count</code> 为 1, 而 <code>objective-C</code> 和 <code>java </code>是 2. 所以这个方案怎么看都不那么合理…<br>这时候, 多么希望有方案可以给某一段文案设置(标记)成一个整体的方案啊.</li>
-</ul>
-</li>
-<li><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2>  原生的控件已经满足不了或者需要大量的定制化才能我们的需求了, 目光只能看向开源轮子. 这时候 <code>YYText</code> 引入了眼帘.<br>  <code>YYText</code>的数据流<code>demo</code>中, 使用了 <code>YYTextBackedString</code> 实现 <code>@&quot;:)</code> 替换 😊 制作表情菜单. 这就给了鶸需求实现的灵感.<ul>
-<li>首先自定义一个 <code>YYTextView</code> 的 <code>textParser</code>. 重写 <code>- (BOOL)parseText:(NSMutableAttributedString *)text selectedRange:(NSRangePointer)selectedRange</code> 方法</li>
-<li>定义一段特殊字符串 <code>BackedString</code> , 里面包含了用户昵称 <code>A</code> 和 他的用户 <code>id</code>, 然后对用户对可见文本 <code>FrontString</code> 为 <code>@A </code>. 配合 <code>NSMutableAttributedString</code> 扩展方法 <code>- yy_setTextBackedString: range:</code>, 对 <code>YYTextView</code> 的可见内容进行替换. 这样我们就把所需要的全部信息藏入了富文本内. </li>
-<li>使用 <code>- yy_setTextBinding: range: </code>将这段可见文本设置成一个整体, 从而实现整体删除.</li>
-<li>使用 <code>- yy_setTextHighlight: range: </code>设置局部文本高亮.</li>
-<li>… 其他的完全可以基于自己的需求自定义.</li>
-</ul>
-</li>
-</ul>
-<h4 id="回到-BackedString"><a href="#回到-BackedString" class="headerlink" title="回到 BackedString."></a>回到 <code>BackedString</code>.</h4><pre><code>- 这一段自定义文本尽量稍微复杂一点, 不然被黑产破解的话, 线上就会出现一些奇奇怪怪的现象了...
-- 这里面还有一个问题, 使用以上方案的时候, 如果用户点击这段文本 `copy` 的时候, 会把密文拿出来. 所以这时候就需要重写 `YYText` 内的 `copy` 方法, 把 `FrontString` 拿出来.
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/// Save current selected attributed text to pasteboard.</span><br><span class="line">- (void)_copySelectedTextToPasteboard &#123;</span><br><span class="line">    if (_allowsCopyAttributedString) &#123;</span><br><span class="line">        NSAttributedString *text = [_innerText attributedSubstringFromRange:_selectedTextRange.asRange];</span><br><span class="line">        if (text.length) &#123;</span><br><span class="line">            [UIPasteboard generalPasteboard].yy_AttributedString = text;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSString *string = [_innerText attributedSubstringFromRange:_selectedTextRange.asRange].string;</span><br><span class="line">        if (string.length) &#123;</span><br><span class="line">            [UIPasteboard generalPasteboard].string = string;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
-<h4 id="关于-YYText"><a href="#关于-YYText" class="headerlink" title="关于 YYText"></a>关于 YYText</h4><pre><code>目前iOS 15已经来了, `YYText`年久失修, 在某些情况下会出一些奇怪的BUG, 能不用就不用吧. 
-</code></pre>
-
+<li>用户发出这段文本以后, 其他用户可以点击前往用户A的个人主页
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ios_tag/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -342,7 +321,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-08-03 09:46:24" itemprop="dateCreated datePublished" datetime="2021-08-03T09:46:24+00:00">2021-08-03</time>
+      <time title="创建时间：2021-08-03 10:00:22" itemprop="dateCreated datePublished" datetime="2021-08-03T10:00:22+00:00">2021-08-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -368,7 +347,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>937</span>
+      <span>977</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -390,46 +369,15 @@
 <li><h3 id="更换主题造成的乱码"><a href="#更换主题造成的乱码" class="headerlink" title="更换主题造成的乱码"></a>更换主题造成的乱码</h3><ul>
 <li>原因: hexo在5.0之后把swig给删除了</li>
 <li>解决: 项目内 <code>$ npm i hexo-renderer-swig</code></li>
-<li>重编一下项目即可(CI的情况下直接提交代码)</li>
-</ul>
-</li>
-<li><h3 id="自定义配置时候-yml文件被覆盖问题"><a href="#自定义配置时候-yml文件被覆盖问题" class="headerlink" title="自定义配置时候.yml文件被覆盖问题"></a>自定义配置时候.yml文件被覆盖问题</h3><ul>
-<li>原因: 因为我们的<code>NexT</code>主题是使用<code>npm</code>加载的, 所以资源都是统一被放在<code>node_modules</code>内, 如果做自定义配置而修改了内部文件的话, 在下次<code>$ npm install</code>的时候就会被覆盖.</li>
-<li>解决: <code>$ cp node_modules/hexo-theme-[theme name]/_config.yml _config.[theme name].yml</code>. <code>[theme name]</code> 需要替换成自己所用的主题名字, 比如<code>next</code>.</li>
-<li>在新拷贝出来的文件内做修改, <code>hexo</code>会自动选择.</li>
-</ul>
-</li>
-<li><h3 id="文章字数统计"><a href="#文章字数统计" class="headerlink" title="文章字数统计"></a>文章字数统计</h3><ul>
-<li>安装: <code>$ npm install hexo-symbols-count-time --save</code></li>
-<li><code>_config.yml</code>设置:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time: </span><br><span class="line">    symbols: true # 文章字数统计  </span><br><span class="line">    time: true # 文章阅读时长  </span><br><span class="line">    total_symbols: true # 站点总字数统计  </span><br><span class="line">    total_time: false # 站点总阅读时长  </span><br><span class="line">    exclude_codeblock: false # 排除代码字数统计</span><br></pre></td></tr></table></figure></li>
-<li>可选: <code>_config.yml</code>中<code>language</code>设置为<code>zh_CN</code></li>
-</ul>
-</li>
-<li><h3 id="NexT主题配置-config-next-yml"><a href="#NexT主题配置-config-next-yml" class="headerlink" title="NexT主题配置 _config.next.yml"></a><code>NexT</code>主题配置 <code>_config.next.yml</code></h3><ul>
-<li>代码块: <code>codeblock</code>字段下按需配置.<ul>
-<li>先<a target="_blank" rel="noopener" href="https://theme-next.js.org/highlight/">体验</a>, 后选择.</li>
-<li>🤔, 一玩一天</li>
-</ul>
-</li>
-<li>favicon: <code>favicon</code> 字段下设置. 对应文件拖入项目内, 配置好路径即可~.<ul>
-<li>推荐一个<a target="_blank" rel="noopener" href="https://realfavicongenerator.net/">工具网站</a></li>
-</ul>
-</li>
-<li>菜单配置: <code>menu</code> 字段下, 可以配置对应的标题和icon. 使用<code>$ hexo new page [name]</code>就可以生成对应的模版, <code>name</code>和<code>menu</code>下的配置匹配到就可以啦. <ul>
-<li><code>icon</code> 可以在<a target="_blank" rel="noopener" href="https://fontawesome.com/">这里</a>找到.</li>
-<li>easy~</li>
-<li><bold>注意</bold>: 设置<code>tags</code>, <code>NexT</code>会自动匹配<code>page</code>, 只需要给<code>tag page</code>下的<code>index.md</code>中的<code>type</code>设置为<code>tags</code>即可.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2021-08-03 13:44:18</span><br><span class="line">type: tags</span><br><span class="line">tags: [技术, iOS]</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>设置头像: <code>avatar</code>字段下, 配置文件地址. <ul>
-<li><code>rounded:</code> 支持自动切圆角.</li>
-<li>支持<code>gif</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+<li>重编一下项目即可(CI的情况下直接提交代码)
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
