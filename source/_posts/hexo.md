@@ -25,7 +25,9 @@ exclude_codeblock: false # 排除代码字数统计
 4. `NexT`主题配置 `_config.next.yml`
     - 代码块: `codeblock`字段下按需配置.先[体验](https://theme-next.js.org/highlight/), 后选择.(🤔, 一玩一天).
     - favicon: `favicon` 字段下设置. 对应文件拖入项目内, 配置好路径即可~. 推荐一个[工具网站](https://realfavicongenerator.net)
-    - 菜单配置: `menu` 字段下, 可以配置对应的标题和icon. 使用`$ hexo new page [name]`就可以生成对应的模版, `name`和`menu`下的名字匹配到就可以啦. easy~
+    - 菜单配置: `menu` 字段下, 可以配置对应的标题和icon. 使用`$ hexo new page [name]`就可以生成对应的模版, `name`和`menu`下的配置匹配到就可以啦. easy~. `icon` 可以在[这里](https://fontawesome.com)找到.
+    - 设置头像: `avatar`字段下, 配置文件地址. `rounded:` 支持自动切圆角.
+
     
 
 
