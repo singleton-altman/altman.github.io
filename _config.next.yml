@@ -37,8 +37,8 @@ custom_file_path:
 # Schemes
 # scheme: Muse
 # scheme: Mist
-# scheme: Pisces
-scheme: Gemini
+scheme: Pisces
+# scheme: Gemini
 
 # Dark Mode
 darkmode: false
@@ -81,6 +81,8 @@ menu:
   首页: / || fa fa-home
   读书: /books/ || fa fa-battery-half
   关于: /about/ || fa fa-user
+  archives: /archives/ || fa fa-archive
+  tags: /tags/ || fa fa-tags
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
@@ -124,7 +126,7 @@ avatar:
   rotated: true
 
 # Posts / Categories / Tags in sidebar.
-site_state: false
+site_state: true
 
 # Social Links
 # Usage: `Key: permalink || icon`
@@ -774,7 +776,7 @@ note:
 # Tabs tag
 tabs:
   transition:
-    tabs: false
+    tabs: true
     labels: true
 
 # PDF tag
@@ -788,7 +790,7 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: false
+  enable: true
   # Available themes: default | dark | forest | neutral
   theme: forest
 

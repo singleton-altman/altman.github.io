@@ -1,5 +1,7 @@
 ---
 title: Hexo搭建遇到的问题
+categories: [技术, Hexo, Next]
+tags: [技术, Hexo, Next]
 ---
 
 - ### 更换主题造成的乱码
@@ -31,6 +33,15 @@ symbols_count_time:
     - 菜单配置: `menu` 字段下, 可以配置对应的标题和icon. 使用`$ hexo new page [name]`就可以生成对应的模版, `name`和`menu`下的配置匹配到就可以啦. 
         - `icon` 可以在[这里](https://fontawesome.com)找到.
         - easy~
+        - <bold>注意</bold>: 设置`tags`, `NexT`会自动匹配`page`, 只需要给`tag page`下的`index.md`中的`type`设置为`tags`即可.
+        ```
+        ---
+        title: tags
+        date: 2021-08-03 13:44:18
+        type: tags
+        tags: [技术, iOS]
+        ---
+        ```
     - 设置头像: `avatar`字段下, 配置文件地址. 
         - `rounded:` 支持自动切圆角.
         - 支持`gif`
