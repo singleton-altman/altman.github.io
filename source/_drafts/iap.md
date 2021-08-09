@@ -1,13 +1,10 @@
 ---
 title: iap
-tags: [iOS, in-app-purchase, StoreKit, StoreKitTest]
 ---
 
 #### 什么是iap
     - 概念
         - 基础
-        - note
-            - 
     - 分类
         - 一次性消耗品
         - 非一次性消耗品
