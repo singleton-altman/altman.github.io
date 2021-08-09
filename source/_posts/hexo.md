@@ -11,7 +11,7 @@ tags: [技术, Hexo, Next]
     - 原因: hexo在5.0之后把swig给删除了
     - 解决: 项目内 `$ npm i hexo-renderer-swig`
     - 重编一下项目即可(CI的情况下直接提交代码)
-    <!-- more -->
+<!-- more -->
 - ### 自定义配置时候.yml文件被覆盖问题
     - 原因: 因为我们的`NexT`主题是使用`npm`加载的, 所以资源都是统一被放在`node_modules`内, 如果做自定义配置而修改了内部文件的话, 在下次`$ npm install`的时候就会被覆盖.
     - 解决: `$ cp node_modules/hexo-theme-[theme name]/_config.yml _config.[theme name].yml`. `[theme name]` 需要替换成自己所用的主题名字, 比如`next`.
