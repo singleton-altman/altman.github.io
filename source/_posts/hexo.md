@@ -4,6 +4,9 @@ categories: [技术, Hexo, Next]
 tags: [技术, Hexo, Next]
 ---
 
+- ### zsh: command not found: hexo 
+    `$ echo \ export PATH=~/.npm-global/bin:\$PATH >> ~/.zshrc`
+    `$ source ~/.zshrc`
 - ### 更换主题造成的乱码
     - 原因: hexo在5.0之后把swig给删除了
     - 解决: 项目内 `$ npm i hexo-renderer-swig`
