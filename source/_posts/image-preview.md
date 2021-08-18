@@ -11,23 +11,15 @@ date: 2021-08-18 11:32:25
 **背景**
     原先项目内的图片预览框架用的是一个魔改的某开源框架, 里面的代码又杂又乱, 各种乱拷贝代码. 这周公司的项目任务已经做完, 就决定给这个框架自己重写一下.
 <!-- more -->   
-**效果**
+
+**效果** [**点我去看效果**](http://blog.loktar.com.cn/image_preview.mp4)
     - 支持单图/多图点开按顺序预览
     - 支持单张放大/缩小
     - 支持从头部和尾部插入列表
     - 支持滑动回收预览
     - 图片可以是`GIF`
     - 支持将图片保存入系统相册
-
-    <video 
-    id="video" 
-    controls="" 
-    preload="none" 
-    poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg">
-      <source 
-      id="mp4" 
-      src="http://blog.loktar.com.cn/image_preview.mp4" type="video/mp4">
-    </video>
+    
 **实现**
     - 主体使用`UIScrollView`, 然后利用`UIScrollViewDelegate`的 `- scrollViewDidZoom:` 和 `- viewForZoomingInScrollView:`配合, 实现滚动、滑动和放大缩小功能.
         - 此处需要注意的是: 层级结构为: `main UIScrollView` -> [`sub UIScrollView` -> `UIView` -> `SDAnimationImageView`], 不然在拖拽时候会出现显示异常
@@ -75,10 +67,12 @@ date: 2021-08-18 11:32:25
         } completionHandler:handler];
     }
     ```
+
 **注意点**
     - 坐标换算
     `CGRect rect = [A convertRect:B.frame fromView:B.supverView]`
     得到的`rect`就是`B`相对于`A`的新坐标.
+
 **demo地址**
     已经上传`github`, [enjoy](https://github.com/aioser/LRSImagePreview)
 
