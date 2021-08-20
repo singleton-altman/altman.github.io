@@ -2,15 +2,16 @@
 title: jenkins
 tags:
 ---
-Tweet
-Homebrew Installer 
- homebrew
 
-Jenkins can be installed using the Homebrew package manager. Homebrew formula: jenkins This is a package supported by a third party which may be not as frequently updated as packages supported by the Jenkins project directly.
+### jenkins 介绍
 
-Sample commands:
-Install the latest Weekly version: brew install jenkins
-Install a specific Weekly version: brew install jenkins@YOUR_VERSION
-Start the Jenkins service: brew services start jenkins
-Restart the Jenkins service: brew services restart jenkins
-Update the Jenkins version: brew upgrade jenkins
+### 安装
+`$ brew install jenkins`
+### 启动
+`$ brew services start jenkins`
+浏览器打开 `localhost:8080`
+初始化密码: ~/.jenkins/secrets/initialAdminPassword
+读取: cat ~/.jenkins/secrets/initialAdminPassword
+推荐插件安装
+如果报错了, 那就挂梯子吧.
+默认地址 http://localhost:8080/

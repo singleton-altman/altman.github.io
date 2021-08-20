@@ -13,17 +13,17 @@ date: 2021-08-18 11:32:25
 <!-- more -->   
 
 **效果** [**点我去看效果**](http://blog.loktar.com.cn/image_preview.mp4)
-    - 支持单图/多图点开按顺序预览
-    - 支持单张放大/缩小
-    - 支持从头部和尾部插入列表
-    - 支持滑动回收预览
-    - 图片可以是`GIF`
-    - 支持将图片保存入系统相册
+- 支持单图/多图点开按顺序预览
+- 支持单张放大/缩小
+- 支持从头部和尾部插入列表
+- 支持滑动回收预览
+- 图片可以是`GIF`
+- 支持将图片保存入系统相册
     
 **实现**
-    - 主体使用`UIScrollView`, 然后利用`UIScrollViewDelegate`的 `- scrollViewDidZoom:` 和 `- viewForZoomingInScrollView:`配合, 实现滚动、滑动和放大缩小功能.
-        - 此处需要注意的是: 层级结构为: `main UIScrollView` -> [`sub UIScrollView` -> `UIView` -> `SDAnimationImageView`], 不然在拖拽时候会出现显示异常
-        - 在 `sub UIScrollView` 的 `- scrollViewDidZoom:`中需要重设 `- viewForZoomingInScrollView: ` 的位置.
+- 主体使用`UIScrollView`, 然后利用`UIScrollViewDelegate`的 `- scrollViewDidZoom:` 和 `- viewForZoomingInScrollView:`配合, 实现滚动、滑动和放大缩小功能.
+    - 此处需要注意的是: 层级结构为: `main UIScrollView` -> [`sub UIScrollView` -> `UIView` -> `SDAnimationImageView`], 不然在拖拽时候会出现显示异常
+    - 在 `sub UIScrollView` 的 `- scrollViewDidZoom:`中需要重设 `- viewForZoomingInScrollView: ` 的位置.
     ```
     CGFloat ratio = MIN(self.bounds.size.width / size.width, self.bounds.size.height / size.height);
     CGFloat W = ratio * size.width;
@@ -69,7 +69,7 @@ date: 2021-08-18 11:32:25
     ```
 
 **注意点**
-    - 坐标换算
+- 坐标换算
     `CGRect rect = [A convertRect:B.frame fromView:B.supverView]`
     得到的`rect`就是`B`相对于`A`的新坐标.
 
