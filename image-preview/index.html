@@ -28,7 +28,7 @@
 <meta property="og:description" content="背景    原先项目内的图片预览框架用的是一个魔改的某开源框架, 里面的代码又杂又乱, 各种乱拷贝代码. 这周公司的项目任务已经做完, 就决定给这个框架自己重写一下.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-18T11:32:25.000Z">
-<meta property="article:modified_time" content="2021-08-18T03:53:31.985Z">
+<meta property="article:modified_time" content="2021-08-20T08:42:05.365Z">
 <meta property="article:author" content="jun.c">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="image preview">
@@ -213,10 +213,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-08-18 11:32:25 / 修改时间：03:53:31" itemprop="dateCreated datePublished" datetime="2021-08-18T11:32:25+00:00">2021-08-18</time>
+      <time title="创建时间：2021-08-18 11:32:25" itemprop="dateCreated datePublished" datetime="2021-08-18T11:32:25+00:00">2021-08-18</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-20 08:42:05" itemprop="dateModified" datetime="2021-08-20T08:42:05+00:00">2021-08-20</time>
+      </span>
 
   
     <span class="post-meta-item" title="本文字数">
@@ -245,9 +251,32 @@
         <p><strong>背景</strong><br>    原先项目内的图片预览框架用的是一个魔改的某开源框架, 里面的代码又杂又乱, 各种乱拷贝代码. 这周公司的项目任务已经做完, 就决定给这个框架自己重写一下.</p>
 <span id="more"></span>   
 
-<p><strong>效果</strong> <a target="_blank" rel="noopener" href="http://blog.loktar.com.cn/image_preview.mp4"><strong>点我去看效果</strong></a><br>    - 支持单图/多图点开按顺序预览<br>    - 支持单张放大/缩小<br>    - 支持从头部和尾部插入列表<br>    - 支持滑动回收预览<br>    - 图片可以是<code>GIF</code><br>    - 支持将图片保存入系统相册</p>
-<p><strong>实现</strong><br>    - 主体使用<code>UIScrollView</code>, 然后利用<code>UIScrollViewDelegate</code>的 <code>- scrollViewDidZoom:</code> 和 <code>- viewForZoomingInScrollView:</code>配合, 实现滚动、滑动和放大缩小功能.<br>        - 此处需要注意的是: 层级结构为: <code>main UIScrollView</code> -&gt; [<code>sub UIScrollView</code> -&gt; <code>UIView</code> -&gt; <code>SDAnimationImageView</code>], 不然在拖拽时候会出现显示异常<br>        - 在 <code>sub UIScrollView</code> 的 <code>- scrollViewDidZoom:</code>中需要重设 <code>- viewForZoomingInScrollView: </code> 的位置.<br>    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CGFloat ratio = MIN(self.bounds.size.width / size.width, self.bounds.size.height / size.height);</span><br><span class="line">CGFloat W = ratio * size.width;</span><br><span class="line">CGFloat H = ratio * size.height;</span><br><span class="line">CGRect imageFrame = CGRectMake((self.bounds.size.width - W) / 2, (self.bounds.size.height - H) / 2, W, H);</span><br><span class="line">self.containerView.frame = imageFrame;</span><br><span class="line">self.imageView.frame = CGRectMake(0, 0, imageFrame.size.width, imageFrame.size.height);</span><br></pre></td></tr></table></figure><br>    - 给主体控件上添加<code>UITapGestureRecognizer</code>手势, 实现在拖拽的时候进行回收/重新布局. 主要的<br>    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)sender &#123;</span><br><span class="line">    static LRSImagePreviewZoomingImageView *currentView = nil;</span><br><span class="line">    if (sender.state == UIGestureRecognizerStateBegan) &#123;</span><br><span class="line">        /// 在手势开始的时候获取当前正在拖拽的自视图</span><br><span class="line">        currentView = ...;</span><br><span class="line">    &#125;</span><br><span class="line">    if (currentView) &#123;</span><br><span class="line">        if (sender.state == UIGestureRecognizerStateEnded) &#123;</span><br><span class="line">            /// 重置</span><br><span class="line">            currentView = nil;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            /// 拖拽动画</span><br><span class="line">            CGPoint p = [sender translationInView:self];</span><br><span class="line">            CGAffineTransform transform = CGAffineTransformMakeTranslation(p.x, p.y);</span><br><span class="line">            CGFloat value = 1 - (MAX(fabs(p.x), fabs(p.y))) / 1000;</span><br><span class="line">            transform = CGAffineTransformScale(transform, value, value);</span><br><span class="line">            currentView.transform = transform;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>    - 因为还需要从图片点击位置出现/回收视图, 所以还需要记录弹出预览图的点击位置.<br>    - 往头部插入数据的时候, 记得设置<code>Scroview</code>的偏移量<br>    - 需要支持<code>GIF</code>, 所以我们引用了<code>SDWebImage</code><br>    - 图片保存系统相册, 我们使用了系统的<code>Photos</code>框架<br>    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+ (void)creationRequestWithData:(NSData *)data options:(nullable PHAssetResourceCreationOptions *)options completionHandler:(void (^)(BOOL, NSError * _Nullable))handler &#123;</span><br><span class="line">    PHPhotoLibrary *library = [PHPhotoLibrary sharedPhotoLibrary];</span><br><span class="line">    [library performChanges:^&#123;</span><br><span class="line">        [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:options];</span><br><span class="line">    &#125; completionHandler:handler];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>注意点</strong><br>    - 坐标换算<br>    <code>CGRect rect = [A convertRect:B.frame fromView:B.supverView]</code><br>    得到的<code>rect</code>就是<code>B</code>相对于<code>A</code>的新坐标.</p>
+<p><strong>效果</strong> <a target="_blank" rel="noopener" href="http://blog.loktar.com.cn/image_preview.mp4"><strong>点我去看效果</strong></a></p>
+<ul>
+<li>支持单图/多图点开按顺序预览</li>
+<li>支持单张放大/缩小</li>
+<li>支持从头部和尾部插入列表</li>
+<li>支持滑动回收预览</li>
+<li>图片可以是<code>GIF</code></li>
+<li>支持将图片保存入系统相册</li>
+</ul>
+<p><strong>实现</strong></p>
+<ul>
+<li>主体使用<code>UIScrollView</code>, 然后利用<code>UIScrollViewDelegate</code>的 <code>- scrollViewDidZoom:</code> 和 <code>- viewForZoomingInScrollView:</code>配合, 实现滚动、滑动和放大缩小功能.<ul>
+<li>此处需要注意的是: 层级结构为: <code>main UIScrollView</code> -&gt; [<code>sub UIScrollView</code> -&gt; <code>UIView</code> -&gt; <code>SDAnimationImageView</code>], 不然在拖拽时候会出现显示异常</li>
+<li>在 <code>sub UIScrollView</code> 的 <code>- scrollViewDidZoom:</code>中需要重设 <code>- viewForZoomingInScrollView: </code> 的位置.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CGFloat ratio = MIN(self.bounds.size.width / size.width, self.bounds.size.height / size.height);</span><br><span class="line">CGFloat W = ratio * size.width;</span><br><span class="line">CGFloat H = ratio * size.height;</span><br><span class="line">CGRect imageFrame = CGRectMake((self.bounds.size.width - W) / 2, (self.bounds.size.height - H) / 2, W, H);</span><br><span class="line">self.containerView.frame = imageFrame;</span><br><span class="line">self.imageView.frame = CGRectMake(0, 0, imageFrame.size.width, imageFrame.size.height);</span><br></pre></td></tr></table></figure></li>
+<li>给主体控件上添加<code>UITapGestureRecognizer</code>手势, 实现在拖拽的时候进行回收/重新布局. 主要的<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)sender &#123;</span><br><span class="line">    static LRSImagePreviewZoomingImageView *currentView = nil;</span><br><span class="line">    if (sender.state == UIGestureRecognizerStateBegan) &#123;</span><br><span class="line">        /// 在手势开始的时候获取当前正在拖拽的自视图</span><br><span class="line">        currentView = ...;</span><br><span class="line">    &#125;</span><br><span class="line">    if (currentView) &#123;</span><br><span class="line">        if (sender.state == UIGestureRecognizerStateEnded) &#123;</span><br><span class="line">            /// 重置</span><br><span class="line">            currentView = nil;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            /// 拖拽动画</span><br><span class="line">            CGPoint p = [sender translationInView:self];</span><br><span class="line">            CGAffineTransform transform = CGAffineTransformMakeTranslation(p.x, p.y);</span><br><span class="line">            CGFloat value = 1 - (MAX(fabs(p.x), fabs(p.y))) / 1000;</span><br><span class="line">            transform = CGAffineTransformScale(transform, value, value);</span><br><span class="line">            currentView.transform = transform;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>因为还需要从图片点击位置出现/回收视图, 所以还需要记录弹出预览图的点击位置.</li>
+<li>往头部插入数据的时候, 记得设置<code>Scroview</code>的偏移量</li>
+<li>需要支持<code>GIF</code>, 所以我们引用了<code>SDWebImage</code></li>
+<li>图片保存系统相册, 我们使用了系统的<code>Photos</code>框架<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+ (void)creationRequestWithData:(NSData *)data options:(nullable PHAssetResourceCreationOptions *)options completionHandler:(void (^)(BOOL, NSError * _Nullable))handler &#123;</span><br><span class="line">    PHPhotoLibrary *library = [PHPhotoLibrary sharedPhotoLibrary];</span><br><span class="line">    [library performChanges:^&#123;</span><br><span class="line">        [[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:data options:options];</span><br><span class="line">    &#125; completionHandler:handler];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p><strong>注意点</strong></p>
+<ul>
+<li>坐标换算<br>  <code>CGRect rect = [A convertRect:B.frame fromView:B.supverView]</code><br>  得到的<code>rect</code>就是<code>B</code>相对于<code>A</code>的新坐标.</li>
+</ul>
 <p><strong>demo地址</strong><br>    已经上传<code>github</code>, <a target="_blank" rel="noopener" href="https://github.com/aioser/LRSImagePreview">enjoy</a></p>
 
     </div>
@@ -267,11 +296,14 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/hexo/" rel="prev" title="Hexo搭建遇到的问题">
-                  <i class="fa fa-chevron-left"></i> Hexo搭建遇到的问题
+                <a href="/xcode-server/" rel="prev" title="Xcode Server/macOS Server 保姆级教程">
+                  <i class="fa fa-chevron-left"></i> Xcode Server/macOS Server 保姆级教程
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/hexo/" rel="next" title="Hexo搭建遇到的问题">
+                  Hexo搭建遇到的问题 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
