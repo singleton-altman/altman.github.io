@@ -10,7 +10,7 @@ date: 2021-08-23 11:33:47
 
 **简介**
 通过iOS的spotlight~~下拉搜索~~基于关键字快速查找, 点击item后打开APP, 代码内也可以支持自动跳转到对应页面. 关键字可以自设, 增加APP的曝光率.
-<!----more---->
+<!-- more -->
 **现状**
 大部分的产品经理不懂iOS, 也不懂iPhone用户. 某些知名APP, 只做了itunes connect的下载搜索关键词覆盖, 竟然不做iOS特性分析...用户下载了以后就变成了一个僵尸APP放在手机里面, 然后被自动清理掉, 真的是太可惜了.
 **使用**
@@ -35,13 +35,13 @@ itemAttributeSet.contentDescription = mark.description
 `CSSearchableItem(uniqueIdentifier: "com.hi.cage.CoreSpotlightDemo_\(mark.id)", domainIdentifier: "landmark", attributeSet: itemAttributeSet)`
     注意此处的 uniqueIdentifier, 需要 `唯一`
 - 建立索引:
-`
+```
 CSSearchableIndex.default().indexSearchableItems(items) { error in
     if let errMessage = error?.localizedDescription {
         debugPrint(errMessage)
     }
 }
-`
+```
     items是一个数组, 所以我们一次可以建立`多个`索引.
 - 接收用户在spotloght的点击事件
 ```
