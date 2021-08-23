@@ -13,7 +13,7 @@ date: 2021-08-23 11:33:47
 <!-- more -->
 **现状**
 大部分的产品经理不懂iOS, 也不懂iPhone用户. 某些知名APP, 只做了itunes connect的下载搜索关键词覆盖, 竟然不做iOS特性分析...用户下载了以后就变成了一个僵尸APP放在手机里面, 然后被自动清理掉, 真的是太可惜了.
-**使用**
+**使用** [点我看效果](http://blog.loktar.com.cn/spotloght-search.mp4)
 - 此处用的是wwdc里面的swiftUI demo内的地标数据.
 - 目标1: 让用户在搜索地标名字的时候显示 icon, name和description. 
 - 目标2: 用户点击对应的item, APP接受到对应的事件和信息, 基于需求完成后续操作.
