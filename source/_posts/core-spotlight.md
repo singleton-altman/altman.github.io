@@ -68,4 +68,4 @@ CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: ["com.hi.cage
 `/// CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: <#T##[String]#>, completionHandler: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)`
 **结束**
 功能很简单, 但是很实用, 接入 spotlight以后, APP活跃度可以有很明显的提升.
-已经上传[gitthub](https://github.com/aioser/CoreSpotlightDemo.git), enjoy~
+已经上传[gitthub](https://github.com/aioser/CoreSpotlightDemo.git)
