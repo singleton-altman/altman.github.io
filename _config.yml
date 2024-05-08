@@ -105,3 +105,7 @@ deploy:
   branch: gh-pages
 
 theme: cactus
+
+hide_posts:
+  filter: security
+  noindex: true

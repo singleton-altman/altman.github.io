@@ -289,7 +289,7 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chalk@^4.0.0:
+chalk@^4, chalk@^4.0.0:
   version "4.1.2"
   resolved "https://registry.npmmirror.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -946,6 +946,13 @@ hexo-generator-tag@^1.0.0:
   integrity sha512-JDoB2T1EncRlyGSjuAhkGxRfKkN8tq0i8tFlk9I4q2L6iYxPaUnFenhji0oxufTADC16/IchuPjmMk//dt8Msg==
   dependencies:
     hexo-pagination "1.0.0"
+
+hexo-hide-posts@^0.4.3:
+  version "0.4.3"
+  resolved "https://repo.huaweicloud.com/repository/npm/hexo-hide-posts/-/hexo-hide-posts-0.4.3.tgz#5b8147f88b5225c06fcc77d7bd861f37ed55e999"
+  integrity sha512-5VLzaX6ntJ0uJy56X5tgbII6oucBoUS5gCzm37ozXibMT8lBmRgbuzzayKNuBL+oQpyAa+vEsLyxlSunyaRs7g==
+  dependencies:
+    chalk "^4"
 
 hexo-i18n@^1.0.0:
   version "1.0.0"
