@@ -86,11 +86,11 @@ error_404:
 #   - gravatar: whether to use your Gravatar as the logo
 #   - grayout: whether to enable a hover effect on the logo
 logo:
-  enabled: false
+  enabled: true
   width: 50
   height: 50
-  url: /images/logo.png
-  gravatar: false
+  url: /images/apple-touch-icon.png
+  gravatar: true
   grayout: true
 
 # Customize the favicons.
