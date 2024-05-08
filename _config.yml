@@ -100,7 +100,7 @@ ignore:
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
+  type: "git"
   repo: https://github.com/singleton-altman/altman.github.io
   branch: gh-pages
 

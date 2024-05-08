@@ -5,6 +5,9 @@ tags: [Hexo, Next]
 date: 2021-03-10 10:33:47
 ---
 
+- ### 部署后css文件加载错误：
+   > _config.yml 中的 url错误，需要填写为自己的`域名或者git page`地址。
+
 - ### zsh: command not found: hexo 
     `$ echo \ export PATH=~/.npm-global/bin:\$PATH >> ~/.zshrc`
     `$ source ~/.zshrc`
@@ -50,8 +53,6 @@ symbols_count_time:
     - 设置头像: `avatar`字段下, 配置文件地址. 
         - `rounded:` 支持自动切圆角.
         - 支持`gif`
-- ### 想要阅读更多按钮?
-    在你觉得合适多位置键入一个 `<!-- more -->` 吧
 
 - ### 设置自定义域名
     - 先去申请一个域名吧, 比如 `loktar.com.cn` [阿里云](https://wanwang.aliyun.com/?spm=5176.19720258.J_8058803260.55.c9a82c4aVT0pTf), 便宜的一年几块钱.
