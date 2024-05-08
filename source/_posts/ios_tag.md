@@ -1,8 +1,7 @@
 ---
 title: iOS @功能始末
 date: 2021-08-03 11:44:17
-categories: [技术, iOS, 艾特, YYText]
-tags: [技术, iOS, 艾特, YYText]
+categories: [iOS, YYText]
 ---
 
 - ### 前言

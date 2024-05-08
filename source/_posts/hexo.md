@@ -1,7 +1,7 @@
 ---
 title: Hexo搭建遇到的问题
-categories: [技术, Hexo, Next]
-tags: [技术, Hexo, Next]
+categories: [Hexo, Next]
+tags: [Hexo, Next]
 date: 2021-03-10 10:33:47
 ---
 

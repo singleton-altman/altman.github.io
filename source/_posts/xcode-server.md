@@ -5,7 +5,6 @@ tags:
   - xcode
   - iOS
   - xcode server
-  - 持续集成
 date: 2021-08-09 18:06:53
 ---
 
