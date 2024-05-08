@@ -4,16 +4,16 @@
 
 # Site
 title: 行之惟艰
-subtitle: "知之非艰，行之惟艰"
-description: "所见, 所想, 所思, 所得"
-keywords: ioser, 读书, web, node.js
-author: jun.c
+subtitle: "路虽远, 行则将至"
+description: ""
+keywords: iOS, swift, flutter, arkTs
+author: 俊臣
 language: zh-CN
 timezone: "Asia/Shanghai"
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://www.loktar.com.cn
+url: https://loser.work
 permalink: :title/
 permalink_defaults:
 pretty_urls:
