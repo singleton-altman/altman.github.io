@@ -90,7 +90,7 @@ logo:
   width: 50
   height: 50
   url: /images/apple-touch-icon.png
-  gravatar: true
+  gravatar: false
   grayout: true
 
 # Customize the favicons.
