@@ -104,4 +104,4 @@ deploy:
   repo: https://github.com/singleton-altman/altman.github.io
   branch: gh-pages
 
-theme: blank
+theme: cactus
