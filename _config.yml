@@ -5,7 +5,7 @@
 # Site
 title: 行之惟艰
 subtitle: "路虽远, 行则将至"
-description: ""
+description: "路虽远, 行则将至"
 keywords: iOS, swift, flutter, arkTs
 author: 俊臣
 language: zh-CN
@@ -13,8 +13,8 @@ timezone: "Asia/Shanghai"
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://loser.work
-permalink: :title/
+url: https://github.com/singleton-altman
+permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -43,8 +43,14 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ""
+  wrap: true
+  hljs: false
 prismjs:
-  enable: false
   preprocess: true
   line_number: true
   tab_replace: ""
@@ -90,18 +96,10 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-highlight:
-  hljs: true
-  enable: true
-  line_number: false
-  auto_detect: true
-  tab_replace: ""
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: ""
 
-symbols_count_time:
-  symbols: true # 文章字数统计
-  time: true # 文章阅读时长
-  total_symbols: true # 站点总字数统计
-  total_time: false # 站点总阅读时长
-  exclude_codeblock: false # 排除代码字数统计
+theme: cactus

@@ -2,6 +2,7 @@
 title: Hexo搭建遇到的问题
 categories: [技术, Hexo, Next]
 tags: [技术, Hexo, Next]
+date: 2021-03-10 10:33:47
 ---
 
 - ### zsh: command not found: hexo 
