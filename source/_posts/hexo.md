@@ -55,15 +55,15 @@ symbols_count_time:
         - 支持`gif`
 
 - ### 设置自定义域名
-    - 先去申请一个域名吧, 比如 `loktar.com.cn` [阿里云](https://wanwang.aliyun.com/?spm=5176.19720258.J_8058803260.55.c9a82c4aVT0pTf), 便宜的一年几块钱.
-    - `hexo` 项目内创建一个 `CNAME` 文件, 文件内输入 `loktar.com.cn`, 二级域名也可以, 随你喜欢. 提交修改 `$ git add .; git commit -m "message"; git push origin master`;
-    - `github` 对应的 `blog` 项目内, 打开 `settings` 下的 `pages`, 找到 `Custom domain`, 输入 `loktar.com.cn`, 然后 `save`.
-    - 打开终端, `$ ping [user name].github.io`, 找到对应 `ip`, `copy` 下来
-    - 打开阿里云[阿里云](https://wanwang.aliyun.com/?spm=5176.19720258.J_8058803260.55.c9a82c4aVT0pTf)`控制台`, 找到`域名`, `解析`, `添加记录`, `记录类型` 选择 `cname`, `主机记录` 输入 `www`, `记录值`输入上一步获取的 `IP`. `确认`
-    - 重复上一步, `主机记录`不输入内容. `确认`
+    - 先去申请一个域名吧, 比如 `loser.work` [阿里云](https://wanwang.aliyun.com/?spm=5176.19720258.J_8058803260.55.c9a82c4aVT0pTf), 便宜的一年几块钱.
+    ~~ - `hexo` 项目内创建一个 `CNAME` 文件, 文件内输入 `loktar.com.cn`, 二级域名也可以, 随你喜欢. 提交修改 `$ git add .; git commit -m "message"; git push origin master`; ~~
+    - `github` 对应的 `blog` 项目内, 打开 `settings` 下的 `pages`, 找到 `Custom domain`, 输入 `loser.work`, 然后 `save`. 
+    ~~ - 打开终端, `$ ping [user name].github.io`, 找到对应 `ip`, `copy` 下来~~
+    - 打开阿里云[阿里云](https://wanwang.aliyun.com/?spm=5176.19720258.J_8058803260.55.c9a82c4aVT0pTf)`控制台`, 找到`域名`, `解析`, `添加记录`, `记录类型` 选择 `cname`, `主机记录` 输入 `www`, `记录值`输入 `git page` 地址. `确认`
+    - 使用 [vercel](https://vercel.com/) 自动部署, 并把域名切换为自己申请的即可
+    ~~ - 重复上一步, `主机记录`不输入内容. `确认`~~
     - 打开浏览器, 键入 `loktar.com.cn`, 就可以看到你的博客了~. 
     - 感谢 `github`. 
-    
 
 
     
