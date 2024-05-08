@@ -37,11 +37,11 @@ custom_file_path:
 # Schemes
 # scheme: Muse
 # scheme: Mist
-scheme: Pisces
-# scheme: Gemini
+# scheme: Pisces
+scheme: vita
 
 # Dark Mode
-darkmode: false
+darkmode: auto
 
 # ---------------------------------------------------------------
 # Site Information Settings
@@ -67,7 +67,7 @@ creative_commons:
   post: false
   # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh
   # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
-  language:
+  language: zh-CN
 
 # ---------------------------------------------------------------
 # Menu Settings

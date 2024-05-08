@@ -90,7 +90,6 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: paper
 highlight:
   hljs: true
   enable: true
@@ -99,8 +98,6 @@ highlight:
   tab_replace: ""
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: ""
 
 symbols_count_time:
   symbols: true # 文章字数统计
